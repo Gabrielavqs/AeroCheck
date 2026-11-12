@@ -76,21 +76,21 @@
 ## 6. Critérios de aceitação / Acceptance Criteria
 
 ### CA1 — Cadastrar aeronave / Register Aircraft
-- **PT:** Dado uma matrícula válida e inédita, quando eu cadastro a aeronave, então ela aparece na lista com status `Operational`.
+- **PT:** Dada uma matrícula válida e inédita, quando eu cadastro a aeronave, então ela aparece na lista com status `Operational`.
 - **EN:** Given a valid and unique registration, when I register the aircraft, then it appears in the list with `Operational` status.
-- **PT:** Dado uma matrícula já existente, quando eu cadastro, então recebo erro 409 e uma mensagem clara na tela.
+- **PT:** Dada uma matrícula já existente, quando eu cadastro, então recebo erro 409 e uma mensagem clara na tela.
 - **EN:** Given an already existing registration, when I submit the registration, then I receive a 409 error and a clear message on the screen.
 
 ### CA2 — Registrar inspeção / Log Inspection
-- **PT:** Dado uma aeronave existente e dados válidos, quando registro a inspeção, então ela aparece como `Pending`.
+- **PT:** Dada uma aeronave existente e dados válidos, quando registro a inspeção, então ela aparece como `Pending`.
 - **EN:** Given an existing aircraft and valid data, when I log the inspection, then it appears as `Pending`.
 
 ### CA3 — Atualizar andamento / Update Progress
-- **PT:** Dado uma inspeção `Pending`, quando clico em "Iniciar", então ela vira `InProgress` e a aeronave vira `InMaintenance`.
+- **PT:** Dada uma inspeção `Pending`, quando clico em "Iniciar", então ela vira `InProgress` e a aeronave vira `InMaintenance`.
 - **EN:** Given a `Pending` inspection, when I click "Start" ("Iniciar"), then it becomes `InProgress` and the aircraft becomes `InMaintenance`.
 - **PT:** Dado uma inspeção `InProgress`, quando clico em "Concluir", então ela vira `Completed` e a aeronave volta a `Operational` (se não houver outra em andamento).
 - **EN:** Given an `InProgress` inspection, when I click "Complete" ("Concluir"), then it becomes `Completed` and the aircraft returns to `Operational` (if no other inspection is in progress).
-- **PT:** Dado uma inspeção `Completed`, então nenhuma ação de andamento é oferecida.
+- **PT:** Dada uma inspeção `Completed`, então nenhuma ação de andamento é oferecida.
 - **EN:** Given a `Completed` inspection, then no progress action is offered.
 
 ### CA4 — Painel / Dashboard
