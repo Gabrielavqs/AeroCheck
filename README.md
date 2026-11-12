@@ -23,7 +23,7 @@ Aviation maintenance inspection tracking system designed to monitor fleet aircra
 
 ## 🇧🇷 Português
 
-Sistema de controlo e acompanhamento de inspeções de manutenção de aeronaves (A-Check, C-Check e Estrutural), focado em conformidade operacional e rastreabilidade.
+Sistema de controle e acompanhamento de inspeções de manutenção de aeronaves (A-Check, C-Check e Estrutural), focado em conformidade operacional e rastreabilidade.
 
 ### Tecnologias
 * **Back-end:** C# / .NET 8 (Web API, Entity Framework Core)
