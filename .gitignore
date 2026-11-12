@@ -4,17 +4,17 @@ obj/
 *.user
 .vs/
 
-# Node / Next.js
+# Node / Next.js / Node / Next.js
 node_modules/
 .next/
 next-env.d.ts
 *.tsbuildinfo
 
-# Segredos e arquivos locais
+# Segredos e arquivos locais / Secrets and local files
 .env.local
 .env*.local
 
-# Editor
+# Editor / Editor
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
