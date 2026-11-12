@@ -88,7 +88,7 @@
 ### CA3 — Atualizar andamento / Update Progress
 - **PT:** Dada uma inspeção `Pending`, quando clico em "Iniciar", então ela vira `InProgress` e a aeronave vira `InMaintenance`.
 - **EN:** Given a `Pending` inspection, when I click "Start" ("Iniciar"), then it becomes `InProgress` and the aircraft becomes `InMaintenance`.
-- **PT:** Dado uma inspeção `InProgress`, quando clico em "Concluir", então ela vira `Completed` e a aeronave volta a `Operational` (se não houver outra em andamento).
+- **PT:** Dada uma inspeção `InProgress`, quando clico em "Concluir", então ela vira `Completed` e a aeronave volta a `Operational` (se não houver outra em andamento).
 - **EN:** Given an `InProgress` inspection, when I click "Complete" ("Concluir"), then it becomes `Completed` and the aircraft returns to `Operational` (if no other inspection is in progress).
 - **PT:** Dada uma inspeção `Completed`, então nenhuma ação de andamento é oferecida.
 - **EN:** Given a `Completed` inspection, then no progress action is offered.
