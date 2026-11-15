@@ -23,3 +23,4 @@ Regras: / Rules:
   *Interface text in Portuguese.*
 - Ao concluir, rode `npm run build` e marque a tarefa em `specs/03-tasks.md`.
   *When done, run `npm run build` and mark the task in `specs/03-tasks.md`.*
+git
