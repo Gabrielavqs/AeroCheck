@@ -1,4 +1,3 @@
-````markdown
 # Plano Técnico / Technical Plan
 
 **Referência / Reference:** `specs/01-spec-inspections.md`
@@ -37,4 +36,3 @@ specs                   -> specs (fonte da verdade / source of truth)
   **EN:** The database must be running before the API (use `docker compose up -d`).
 - **PT:** Sem autenticação: não usar fora de ambiente local.
   **EN:** No authentication: do not use outside a local environment.
-````
