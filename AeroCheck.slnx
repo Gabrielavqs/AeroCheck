@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/backend/">
     <Project Path="backend/AeroCheck.Api/AeroCheck.Api.csproj" />
+    <Project Path="backend/AeroCheck.Tests/AeroCheck.Tests.csproj" />
   </Folder>
 </Solution>
