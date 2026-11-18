@@ -1,14 +1,86 @@
 @baseUrl = http://localhost:5080
 
-### Listar aeronaves
+# HTTP requests file for Visual Studio 2022 (17.8+), VS Code (REST Client extension), or Rider.
+# Arquivo de requisições HTTP para Visual Studio 2022 (17.8+), VS Code (extensão REST Client) ou Rider.
+#
+# Click "Send request" above each block. Run in order: later blocks depend on earlier responses.
+# Clique em "Send request" acima de cada bloco. Execute na ordem: os blocos finais usam o resultado dos anteriores.
+#
+# Note: Block 3 registers PR-ZZZ; running it again returns 409 (RN6). This is expected.
+# Obs.: o bloco 3 cadastra a matrícula PR-ZZZ; se rodar novamente, receberá 409 (RN6). Isso é esperado.
+
+### 1. Dashboard summary / Resumo do painel (expected / esperado: 200)
+GET {{baseUrl}}/api/dashboard/summary
+
+### 2. List aircraft / Listar aeronaves (expected / esperado: 200)
 GET {{baseUrl}}/api/aircraft
 
-### Cadastrar aeronave
+### 3. Register aircraft / Cadastrar aeronave (expected / esperado: 201, status Operational)
+# @name createAircraft
 POST {{baseUrl}}/api/aircraft
 Content-Type: application/json
 
 {
-  "registration": "PR-XXX",
-  "model": "E190",
-  "flightHours": 10
+  "registration": "PR-ZZZ",
+  "model": "E175",
+  "flightHours": 100
 }
+
+### 4. Register duplicate registration / Cadastrar a mesma matrícula (expected / esperado: 409, RN6)
+POST {{baseUrl}}/api/aircraft
+Content-Type: application/json
+
+{
+  "registration": "PR-ZZZ",
+  "model": "E175",
+  "flightHours": 100
+}
+
+### 5. Invalid registration format / Matrícula fora do formato (expected / esperado: 400)
+POST {{baseUrl}}/api/aircraft
+Content-Type: application/json
+
+{
+  "registration": "abc",
+  "model": "E175",
+  "flightHours": 0
+}
+
+### 6. Create overdue inspection / Registrar inspeção com prazo vencido (expected / esperado: 201, Pending, isOverdue true)
+# @name createInspection
+POST {{baseUrl}}/api/inspections
+Content-Type: application/json
+
+{
+  "aircraftId": {{createAircraft.response.body.$.id}},
+  "type": "A-Check",
+  "description": "Inspeção de 600 horas",
+  "dueDate": "2020-01-01"
+}
+
+### 7. Skip directly to Completed / Pular direto para Completed (expected / esperado: 400, RN2)
+PATCH {{baseUrl}}/api/inspections/{{createInspection.response.body.$.id}}/status
+Content-Type: application/json
+
+{ "status": "Completed" }
+
+### 8. Start inspection / Iniciar a inspeção (expected / esperado: 200, InProgress; aircraft becomes InMaintenance / aeronave passa a InMaintenance, RN3)
+PATCH {{baseUrl}}/api/inspections/{{createInspection.response.body.$.id}}/status
+Content-Type: application/json
+
+{ "status": "InProgress" }
+
+### 9. Check aircraft status / Conferir a aeronave (expected / esperado: PR-ZZZ with status / com status InMaintenance)
+GET {{baseUrl}}/api/aircraft
+
+### 10. Complete inspection / Concluir a inspeção (expected / esperado: 200, Completed, isOverdue false; aircraft returns to Operational / aeronave volta a Operational, RN4)
+PATCH {{baseUrl}}/api/inspections/{{createInspection.response.body.$.id}}/status
+Content-Type: application/json
+
+{ "status": "Completed" }
+
+### 11. Filter completed inspections / Filtrar inspeções concluídas (expected / esperado: 200)
+GET {{baseUrl}}/api/inspections?status=Completed
+
+### 12. Invalid status filter / Status inválido no filtro (expected / esperado: 400)
+GET {{baseUrl}}/api/inspections?status=Qualquer
