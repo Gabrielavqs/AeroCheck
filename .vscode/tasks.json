@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "front: dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "front: build",
+      "type": "shell",
+      "command": "npm run build",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "api: run",
+      "type": "shell",
+      "command": "dotnet run --project backend/AeroCheck.Api",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "api: test",
+      "type": "shell",
+      "command": "dotnet test AeroCheck.slnx",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "smoke-test",
+      "type": "shell",
+      "command": "node scripts/smoke-test.mjs",
+      "problemMatcher": []
+    }
+  ]
+}
