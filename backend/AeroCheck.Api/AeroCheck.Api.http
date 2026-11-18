@@ -1,6 +1,14 @@
-@AeroCheck.Api_HostAddress = http://localhost:5268
+@baseUrl = http://localhost:5080
 
-GET {{AeroCheck.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### Listar aeronaves
+GET {{baseUrl}}/api/aircraft
 
-###
+### Cadastrar aeronave
+POST {{baseUrl}}/api/aircraft
+Content-Type: application/json
+
+{
+  "registration": "PR-XXX",
+  "model": "E190",
+  "flightHours": 10
+}
